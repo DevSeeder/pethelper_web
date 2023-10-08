@@ -36,7 +36,7 @@ const Home: React.FC = () => {
 
   return (
     <Container style={{ marginTop: '2em' }}>
-      <Header as='h1'>Pet Expenses Tracker</Header>
+      <Header as='h1'>Pet Helper</Header>
       <ExpenseForm onAddExpense={addExpense} />
       <Segment>
         <ExpenseList

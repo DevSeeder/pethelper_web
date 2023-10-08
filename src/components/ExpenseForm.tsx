@@ -4,24 +4,10 @@ import { Form, Button, Dropdown } from 'semantic-ui-react';
 interface ExpenseFormProps {
   onAddExpense: (expense: Expense) => void;
   initialExpense?: Expense;
-}
-
-interface Expense {
-  id: number;
-  description: string;
-  amount: number;
-  category: string;
-}
-
-interface ExpenseFormState {
-  id: number;
-  description: string;
-  amount: number;
-  category: string;
-}
+} 
 
 const ExpenseForm: React.FC<ExpenseFormProps> = ({ onAddExpense, initialExpense = { id: 0, description: '', amount: 0, category: '' } }) => {
-  const [formData, setFormData] = useState<ExpenseFormState>(initialExpense);
+  const [formData, setFormData] = useState<Expense>(initialExpense);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -38,26 +24,26 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ onAddExpense, initialExpense 
   };
 
   const categoryOptions = [
-    { key: 'food', value: 'food', text: 'Alimentação' },
-    { key: 'hygiene', value: 'hygiene', text: 'Higiene' },
-    { key: 'vaccines', value: 'vaccines', text: 'Vacinas' },
-    { key: 'medicalExpenses', value: 'medicalExpenses', text: 'Despesas Médicas' },
-    { key: 'shopping', value: 'shopping', text: 'Compras' },
-    { key: 'toys', value: 'toys', text: 'Brinquedos' },
+    { key: 'Alimentação', value: 'Alimentação', text: 'Alimentação' },
+    { key: 'Higiene', value: 'Higiene', text: 'Higiene' },
+    { key: 'Vacinas', value: 'Vacinas', text: 'Vacinas' },
+    { key: 'médico', value: 'médico', text: 'Despesas Médicas' },
+    { key: 'Compras', value: 'Compras', text: 'Compras' },
+    { key: 'Brinquedos', value: 'toys', text: 'Brinquedos' },
   ];
 
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Input
-        label='Description'
-        placeholder='Description'
+        label='Descrição'
+        placeholder='Descrição'
         name='description'
         value={formData.description}
         onChange={handleChange}
       />
       <Form.Input
-        label='Amount'
-        placeholder='Amount'
+        label='Valor'
+        placeholder='Valor'
         type='number'
         name='amount'
         value={formData.amount}

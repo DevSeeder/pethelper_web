@@ -7,13 +7,6 @@ interface ExpenseListProps {
   onEditExpense: (expense: Expense) => void;
 }
 
-interface Expense {
-  id: number;
-  description: string;
-  amount: number;
-  category: string;
-}
-
 const ExpenseList: React.FC<ExpenseListProps> = ({ expenses, onDeleteExpense, onEditExpense }) => {
   const groupedExpenses: { [key: string]: Expense[] } = {};
 

@@ -20,8 +20,8 @@ interface ExpenseFormState {
   category: string;
 }
 
-const ExpenseForm: React.FC<ExpenseFormProps> = ({ onAddExpense, initialExpense }) => {
-  const [formData, setFormData] = useState<ExpenseFormState>(initialExpense || { id: 0, description: '', amount: 0, category: '' });
+const ExpenseForm: React.FC<ExpenseFormProps> = ({ onAddExpense, initialExpense = { id: 0, description: '', amount: 0, category: '' } }) => {
+  const [formData, setFormData] = useState<ExpenseFormState>(initialExpense);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;

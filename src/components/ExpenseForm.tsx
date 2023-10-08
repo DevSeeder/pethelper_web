@@ -9,7 +9,7 @@ interface ExpenseFormProps {
 const ExpenseForm: React.FC<ExpenseFormProps> = ({ onAddExpense, initialExpense = { id: 0, description: '', amount: 0, category: '' } }) => {
   const [formData, setFormData] = useState<Expense>(initialExpense);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,

@@ -58,7 +58,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ onAddExpense, initialExpense 
           options={categoryOptions}
           name='category'
           value={formData.category}
-          onChange={(e, { value }) => handleChange({ target: { name: 'category', value } })}
+          onChange={(e, { value }) => handleChange({ target: { name: 'category', value: value as string } })}
         />
       </Form.Field>
       <Button type='submit'>Adicionar Despesa</Button>

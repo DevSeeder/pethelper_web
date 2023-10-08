@@ -32,3 +32,15 @@ jobs:
 
             pm2 start pethelper_web
             pm2 save
+
+      - name: Set up AWS CLI
+        run: |
+          echo ${{ secrets.AWS_ACCESS_KEY_ID }} > aws_access_key_id
+          echo ${{ secrets.AWS_SECRET_ACCESS_KEY }} > aws_secret_access_key
+          aws configure set aws_access_key_id $(cat aws_access_key_id)
+          aws configure set aws_secret_access_key $(cat aws_secret_access_key)
+
+      - name: Access AWS Secret Manager
+        run: |
+          secret_value=$(aws secretsmanager get-secret-value --secret-id ${{ secrets.SERVER_SECRET_NAME }} --region ${{ secrets.AWS_REGION }} --query SecretString --output text)
+          echo "Secret Value: $secret_value"
